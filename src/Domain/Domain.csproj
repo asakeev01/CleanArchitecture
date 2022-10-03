@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Validations" />
+      <Folder Include="Entities\Users\UserEnums\" />
+      <Folder Include="Entities\Documents\" />
+      <Folder Include="Entities\Applications\" />
+      <Folder Include="Entities\Users\Exceptions\" />
+      <Folder Include="Common\Options\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.7" />
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.7" />
+      <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.9" />
+      <PackageReference Include="MailKit" Version="3.4.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Common\Resources\SharedResource.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>SharedResource.Designer.cs</LastGenOutput>
+        <DependentUpon>SharedResource.properties</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Common\Resources\SharedResource.en-us.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>SharedResource.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Common\Resources\SharedResource.ru-ru.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <DependentUpon>SharedResource.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Common\Resources\AccountResource.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>AccountResource.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Common\Resources\SharedResource.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SharedResource.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Common\Resources\AccountResource.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AccountResource.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Microsoft.Extensions.Localization" />
+      <None Remove="Entities\Users\UserEnums\" />
+      <None Remove="Entities\Documents\" />
+      <None Remove="Entities\Applications\" />
+      <None Remove="Entities\Users\Exceptions\" />
+      <None Remove="Common\Options\" />
+      <None Remove="MailKit" />
+    </ItemGroup>
+</Project>

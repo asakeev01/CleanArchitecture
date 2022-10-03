@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Attributes" />
+      <Folder Include="Common\Behaviours" />
+      <Folder Include="Common\Constants" />
+      <Folder Include="Common\Exceptions" />
+      <Folder Include="Common\Extensions" />
+      <Folder Include="Common\Helpers" />
+      <Folder Include="Common\Interfaces" />
+      <Folder Include="UseCases\Auth\" />
+      <Folder Include="UseCases\Auth\Commands\" />
+      <Folder Include="UseCases\Auth\Queries\" />
+      <Folder Include="UseCases\Auth\Commands\RegisterUser\" />
+      <Folder Include="UseCases\Auth\Commands\ConfirmEmail\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Gridify" Version="2.8.0" />
+      <PackageReference Include="Mapster" Version="7.3.0" />
+      <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="UseCases\Auth\" />
+      <None Remove="UseCases\Auth\Commands\" />
+      <None Remove="UseCases\Auth\Queries\" />
+      <None Remove="UseCases\Auth\Commands\RegisterUser\" />
+      <None Remove="UseCases\Auth\Commands\ConfirmEmail\" />
+    </ItemGroup>
+</Project>
