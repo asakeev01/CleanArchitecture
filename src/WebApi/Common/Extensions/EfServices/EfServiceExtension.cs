@@ -1,9 +1,12 @@
-﻿using Domain.Entities.Users;
+using Domain.Entities.Users;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Seed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+﻿using Infrastructure.Persistence;
+using Infrastructure.Persistence.Seed;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace WebApi.Common.Extensions.EfServices;

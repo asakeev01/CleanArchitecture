@@ -8,6 +8,7 @@ public interface IUnitOfWork : IDisposable
     ITransactionRepository TransactionRepository { get; }
 
     IUserRepository UserRepository { get; }
+
     
     void Save();
     Task SaveAsync();

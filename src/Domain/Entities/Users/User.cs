@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.Users;
 
-public class User : IdentityUser
+public class User : IdentityUser<long>
 {
     public string? Name { get; set; }
     public string? Surname { get; set; }
@@ -24,4 +24,10 @@ public class User : IdentityUser
 
     public Document Document { get; set; }
     public virtual ICollection<Application> Applications { get; set; }
+
+    public ICollection<UserRole> UserRoles { get; set; }
+
+    public ICollection<Account> Accounts { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
 }

@@ -1,6 +1,7 @@
 ﻿using Gridify;
 using Serilog;
 using Serilog.Core;
+using WebApi.Common.Extensions.ApiVersioningServices;
 using WebApi.Common.Extensions.DomainServices;
 using WebApi.Common.Extensions.EfServices;
 using WebApi.Common.Extensions.ErrorHandlingServices;
@@ -25,6 +26,7 @@ public static class WebApplicationBuilderExtension
         
         services.AddMapster();
         services.AddFluentValidators();
+        services.AddApiVersion();
         services.AddSwagger();
         services.AddGridify(configuration);
         services.AddEndpointsApiExplorer();
@@ -33,7 +35,7 @@ public static class WebApplicationBuilderExtension
         services.AddErrorHandlingService(configuration, env, logger);
         services.AddMediatr();
         services.AddAppDbContext(configuration, env);
-        services.AddIdentityService(configuration, env);
+        services.AddIdentityService(configuration);
         services.AddRepositories();
         services.RegisterDomainServices(configuration);
     }
@@ -44,32 +46,21 @@ public static class WebApplicationBuilderExtension
         var configuration = builder.Configuration;
 
         app.UseErrorHandling();
-        app.UseSwaggerUi();
+        if (builder.Environment.IsDevelopment())
+        {
+            app.UseSwaggerUi();
+        }
         app.UseRouting();
-        
         app.UseLocalization();
         app.UseHttpsRedirection();
         app.UseSerilogRequestLogging();
-        
+
+        app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
 
         app.AutoMigrateDb();
         await app.Seed();
         await app.RunAsync();
-    }
-
-    internal static Logger RegisterSerilog(this WebApplicationBuilder builder)
-    {
-        var _logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(builder.Configuration)
-            .CreateLogger();
-
-        Log.Logger = _logger;
-        builder.Logging.ClearProviders();
-        builder.Logging.AddSerilog(_logger);
-        builder.Host.UseSerilog();
-
-        return _logger;
     }
 }

@@ -10,7 +10,8 @@ public static class ModelBuilderExtensions
     {
         builder.Entity<Account>()
             .HasQueryFilter(p => !p.IsDeleted);
-        //builder.Entity<User>()
-        //    .HasQueryFilter(p => !p.IsDeleted);
+
+        builder.Entity<User>()
+            .HasQueryFilter(p => !p.IsDeleted);
     }  
 }

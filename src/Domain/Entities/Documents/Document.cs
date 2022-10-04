@@ -6,13 +6,13 @@ namespace Domain.Entities.Documents
 {
     public class Document
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string? FrontPassportPath { get; set; }
         public string? BackPassportPath { get; set; }
         public string? InsurancePath { get; set; }
         public string? DisabilityPath { get; set; }
 
-        public string UserId { get; set; }
+        public long UserId { get; set; }
         public User User { get; set; }
     }
 }

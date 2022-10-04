@@ -13,7 +13,7 @@ public class WithdrawRequestDto
     public int AccountId { get; set; }
     
     [JsonIgnore]
-    public int UserId => UserServiceLoc.GetCurrentUser();
+    public int UserId => UserService.GetCurrentUser();
 }
 
 public class WithdrawRequestValidator : AbstractValidator<WithdrawRequestDto> 

@@ -10,16 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
 
-//public class AppDbContext : IdentityDbContext<User, Role, long,
-//    IdentityUserClaim<long>, UserRole, IdentityUserLogin<long>,
-//    IdentityRoleClaim<long>, IdentityUserToken<long>>
-
-public class AppDbContext : IdentityDbContext<User>
+public class AppDbContext : IdentityDbContext<User, Role, long>
 {
-    //public AppDbContext()
-    //{
-
-    //}
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         //Database.EnsureCreated();
@@ -33,6 +25,8 @@ public class AppDbContext : IdentityDbContext<User>
     
     public DbSet<Account> Accounts { get; set; }
     
+    public DbSet<UserRole> UserRoles { get; set; }
+
     public DbSet<AccountType> AccountTypes { get; set; }
     
     public DbSet<AccountStatus> AccountStatuses { get; set; }
